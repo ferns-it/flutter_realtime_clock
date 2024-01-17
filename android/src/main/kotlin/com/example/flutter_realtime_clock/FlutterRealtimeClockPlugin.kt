@@ -1,5 +1,6 @@
 package com.example.flutter_realtime_clock
 
+import android.util.Log
 import com.example.flutter_realtime_clock.adapter.ClockAdapter
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -26,7 +27,6 @@ class FlutterRealtimeClockPlugin : FlutterPlugin, MethodCallHandler, ActivityAwa
         channel.setMethodCallHandler(this)
         eventChannel.setStreamHandler(this)
         adapter = ClockAdapter().getInstance()
-        adapter!!.sendCurrentTimeToEventChannel();
     }
 
     companion object {
@@ -47,15 +47,18 @@ class FlutterRealtimeClockPlugin : FlutterPlugin, MethodCallHandler, ActivityAwa
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
         adapter!!.init(binding.activity);
+        Log.d("Flutter Real Time Clock", "onAttachedToActivity")
     }
 
     override fun onDetachedFromActivityForConfigChanges() {}
 
     override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
         adapter!!.init(binding.activity);
+        Log.d("Flutter Real Time Clock", "onReattachedToActivityForConfigChanges")
     }
 
     override fun onDetachedFromActivity() {
+        Log.d("Flutter Real Time Clock", "onDetachedFromActivity")
         adapter!!.destroy()
     }
 

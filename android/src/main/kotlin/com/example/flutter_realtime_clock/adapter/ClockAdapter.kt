@@ -18,6 +18,7 @@ class ClockAdapter {
 
     private val timeTickReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
+            Log.d("Flutter Real Time Clock", "Event Received!")
             sendCurrentTimeToEventChannel()
         }
     }
@@ -30,7 +31,7 @@ class ClockAdapter {
             val formatter = DateTimeFormatter.ISO_DATE_TIME
             val formattedDateTime = currentDateTime.format(formatter)
             FlutterRealtimeClockPlugin.eventSink?.success(formattedDateTime)
-            Log.d("Flutter Real Time Clock", "Event Sent Successfully!")
+            Log.d("Flutter Real Time Clock", formattedDateTime)
         }
     }
 
@@ -45,14 +46,11 @@ class ClockAdapter {
 
     fun init(activity: Activity) {
         this.activity = activity
-        sendCurrentTimeToEventChannel()
-        Log.d("Flutter Real Time Clock", "Event Sent Successfully! (activity attached)")
         val intent = IntentFilter();
         intent.addAction(Intent.ACTION_TIME_TICK)
         intent.addAction(Intent.ACTION_TIME_CHANGED)
         intent.addAction(Intent.ACTION_TIMEZONE_CHANGED)
         this.activity!!.registerReceiver(timeTickReceiver, intent)
-
     }
 
     fun destroy() {
