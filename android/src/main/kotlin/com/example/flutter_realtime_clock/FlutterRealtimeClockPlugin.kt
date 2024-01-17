@@ -1,6 +1,5 @@
 package com.example.flutter_realtime_clock
 
-import androidx.annotation.NonNull
 import com.example.flutter_realtime_clock.adapter.ClockAdapter
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin

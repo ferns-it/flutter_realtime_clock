@@ -29,6 +29,7 @@ class ClockAdapter {
             val formatter = DateTimeFormatter.ISO_DATE_TIME
             val formattedDateTime = currentDateTime.format(formatter)
             FlutterRealtimeClockPlugin.eventSink?.success(formattedDateTime)
+            Log.d("Flutter Real Time", "current date & time: $formattedDateTime")
         }
     }
 
