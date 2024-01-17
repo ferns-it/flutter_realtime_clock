@@ -26,6 +26,7 @@ class FlutterRealtimeClockPlugin : FlutterPlugin, MethodCallHandler, ActivityAwa
         channel.setMethodCallHandler(this)
         eventChannel.setStreamHandler(this)
         adapter = ClockAdapter().getInstance()
+        adapter!!.sendCurrentTimeToEventChannel();
     }
 
     companion object {
