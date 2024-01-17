@@ -29,9 +29,7 @@ class ClockAdapter {
             // Format LocalDateTime to ISO String
             val formatter = DateTimeFormatter.ISO_DATE_TIME
             val formattedDateTime = currentDateTime.format(formatter)
-            activity!!.runOnUiThread {
-                FlutterRealtimeClockPlugin.eventSink?.success(formattedDateTime)
-            }
+            FlutterRealtimeClockPlugin.eventSink?.success(formattedDateTime)
             Log.d("Flutter Real Time Clock", "Event Sent Successfully!")
         }
     }
