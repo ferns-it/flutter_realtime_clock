@@ -68,6 +68,6 @@ android {
 }
 
 dependencies {
-    compileOnly files('tmplibs/flutter.jar')
+    // compileOnly files('tmplibs/flutter.jar')
     implementation 'androidx.annotation:annotation:1.7.1'
 }
